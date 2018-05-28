@@ -5,12 +5,11 @@ var fs = require('fs');
 var server = http.createServer(function(request, response){
     var parseURL = url.parse(request.url);
     var resource = parseURL.pathname;
-    resource = resource.split('/')[1];
 
     // 1. 요청된 자원이 /hello 이면
-    // if(resource == '/hello.html'){
+    if(resource == '/hello'){
         // 2. hello.html 파일을 읽은 후
-        fs.readFile(resource, 'utf-8', function(error, data){
+        fs.readFile('hello.html', 'utf-8', function(error, data){
             // 2.1 읽으면서 여류가 발생하면 오류의 내용을
             if(error){
                 response.writeHead( 500, {'Content-Type':'text/html'} );
@@ -21,10 +20,10 @@ var server = http.createServer(function(request, response){
                 response.end(data);
             }
         });
-    // } else{
-    //     response.writeHead( 404, {'Content-Type':'text/html'} );
-    //     response.end('404 Page Not Found');
-    // }
+    } else{
+        response.writeHead( 404, {'Content-Type':'text/html'} );
+        response.end('404 Page Not Found');
+    }
 });
 
 server.listen(80, function(){

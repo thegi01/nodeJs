@@ -5,7 +5,7 @@ var fs = require('fs');
 var server = http.createServer(function(request, response){
     var parseURL = url.parse(request.url);
     var resource = parseURL.pathname;
-    resource = resource.split('/')[1];
+    resource = resource.substr(1);
 
     // 1. 요청된 자원이 /hello 이면
     // if(resource == '/hello.html'){

@@ -25,10 +25,10 @@ var server = http.createServer(function(request, response){
     //     response.writeHead( 404, {'Content-Type':'text/html'} );
     //     response.end('404 Page Not Found');
     // }
-    
+
     /* __dirname */
-    console.log(__dirname);
-    console.log(__filename);
+    console.log('__dirname', __dirname);
+    console.log('__filename', __filename);
 });
 
 server.listen(80, function(){
